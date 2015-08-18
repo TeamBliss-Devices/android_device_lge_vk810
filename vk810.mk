@@ -2,7 +2,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-PRODUCT_NAME := vk810
+PRODUCT_NAME := full_vk810
 PRODUCT_DEVICE := vk810
 PRODUCT_BRAND := lge
 PRODUCT_MODEL := LG-VK810
