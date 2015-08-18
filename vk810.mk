@@ -1,8 +1,4 @@
 # Inherit from the common Open Source product configuration
-# Boot animation
-TARGET_BOOTANIMATION_HALF_RES := true
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1200
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
