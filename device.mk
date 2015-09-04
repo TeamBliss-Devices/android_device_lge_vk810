@@ -97,6 +97,15 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/gps.conf:system/etc/gps.conf \
 	$(LOCAL_PATH)/sap.conf:system/etc/sap.conf
 
+# IPv6 tethering
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
+
+# IRSC
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/sec_config:system/etc/sec_config
+
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=196608
 
@@ -138,7 +147,8 @@ PRODUCT_PACKAGES += \
 	libaudio-resampler
 
 PRODUCT_PACKAGES += \
-        libmm-omxcore \
+	libdashplayer \
+	libmm-omxcore \
 	libdivxdrmdecrypt \
 	libOmxVdec \
 	libOmxVenc \

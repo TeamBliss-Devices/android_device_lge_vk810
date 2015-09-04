@@ -70,6 +70,7 @@ on early-init
     symlink /data/tombstones /tombstones
     write /sys/block/mmcblk0/bdi/read_ahead_kb 512
     write /sys/block/mmcblk1/bdi/read_ahead_kb 512
+    symlink /dev/diag /dev/diag_lge
 
 on early-fs
     mkdir /persist 0771 system system
@@ -119,6 +120,9 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
 
 # sungwook.park@lge.com 2013.04.23 change qcks, ks, efsks into system process
 service kickstart /system/bin/qcks -i /firmware/image/
+    class core
+    user system
+    group system
     oneshot
     disabled
 
@@ -447,6 +451,9 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
+    # Set up modem
+    write /sys/module/rmnet_usb/parameters/rmnet_data_init 1
+
     # Allow QMUX daemon to assign port open wait time
     chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
 
@@ -583,6 +590,7 @@ on fs
 # msm specific files that need to be created on /data
 on post-fs-data
     write /sys/kernel/boot_adsp/boot 1
+    setprop qcom.audio.init complete
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -674,6 +682,11 @@ on property:vold.decrypt=trigger_restart_framework
     start sensors
     start conn_init
 
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
+    class main
+    user root
+    oneshot
+
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
@@ -762,7 +775,7 @@ service qmiproxy /system/bin/qmiproxy
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
-    class core
+    class main
     user radio
     group radio audio bluetooth gps qcom_diag
 

@@ -31,7 +31,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 
 # Try to build the kernel
 TARGET_KERNEL_SOURCE := kernel/lge/vk810
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 lpj=67677 androidboot.hardware=altev vmalloc=400M no_console_suspend
+BOARD_KERNEL_CMDLINE := console=none user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 lpj=67677 androidboot.hardware=altev vmalloc=400M no_console_suspend
 TARGET_KERNEL_CONFIG := cyanogenmod_vk810_defconfig
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/lge/vk810/mkbootimg.mk
@@ -49,8 +49,6 @@ TARGET_BOARD_PLATFORM := msm8960
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_HOSTAPD_DRIVER := NL80211
-
-BOARD_EGL_CFG := device/lge/vk810/egl.cfg
 
 #BOARD_USES_HGL := true
 #BOARD_USES_OVERLAY := true
@@ -136,6 +134,7 @@ COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' -DBOA
 
 BOARD_HARDWARE_CLASS := device/lge/vk810/cmhw/
 
+TARGET_USES_LOGD := false
 BOARD_USES_LEGACY_MMAP := true
 
 # Radio
