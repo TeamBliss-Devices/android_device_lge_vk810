@@ -1,5 +1,4 @@
 # Inherit from the common Open Source product configuration
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 PRODUCT_NAME := full_vk810
