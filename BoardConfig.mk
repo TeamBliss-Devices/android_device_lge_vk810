@@ -163,7 +163,6 @@ TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
 #TARGET_ENABLE_UKM := true
 
-WITH_LZMA_OTA := false
 
 #SaberMod
 -include vendor/bliss/config/sm.mk
