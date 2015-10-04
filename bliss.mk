@@ -1,11 +1,14 @@
+#Bliss Audio Mod
+BLISS_AUDIO_MOD := viper
+
 # Boot animation
-TARGET_BOOTANIMATION_HALF_RES := true
+TARGET_BOOTANIMATION_HALF_RES := false
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1200
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
-$(call inherit-product, vendor/cm/config/telephony.mk)
+$(call inherit-product, vendor/bliss/config/common_full_tablet_wifionly.mk)
+$(call inherit-product, vendor/bliss/config/telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device configuration
@@ -13,7 +16,7 @@ $(call inherit-product, device/lge/vk810/vk810.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := vk810
-PRODUCT_NAME := cm_vk810
+PRODUCT_NAME := bliss_vk810
 PRODUCT_BRAND := lge
 PRODUCT_MODEL := LG-VK810
 PRODUCT_MANUFACTURER := LGE
