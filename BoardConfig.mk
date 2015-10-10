@@ -117,6 +117,11 @@ TARGET_RECOVERY_FSTAB = device/lge/vk810/fstab.altev
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_PIC :=true
+WITH_DEXPREOPT_COMP :=true
+DONT_DEXPREOPT_PREBUILTS := true
+
 # SELinux policies
 # qcom sepolicy
 include device/qcom/sepolicy/sepolicy.mk
